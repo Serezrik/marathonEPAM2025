@@ -131,7 +131,7 @@ export class ParticipantCard {
     this.#userService
       .getUsers()
       .pipe(
-        tap(({ status }) => {
+        tap(({ status }: { status: number }) => {
           if (status === 200) {
             this.#modalService.openWithResult(
               ParticipantInfoModal,
@@ -167,4 +167,48 @@ export class ParticipantCard {
       true
     );
   }
+  public onDeleteClick(): void {
+    const participant = this.participant();
+
+    if (!this.isCurrentUserAdmin()) return;
+
+    const confirmed = confirm(
+      `Are you sure you want to remove ${participant.firstName} ${participant.lastName}?`
+    );
+
+    if (!confirmed) return;
+
+    this.#userService
+      .deleteUser(participant.id, this.userCode())
+      .pipe(
+        tap({
+          next: () => {
+            this.#popup.show(
+              this.#host.nativeElement,
+              PopupPosition.Right,
+              {
+                message: `${participant.firstName} was removed.`,
+                type: MessageType.Success,
+              },
+              false
+            );
+            this.#host.nativeElement.remove();
+          },
+          error: () => {
+            this.#popup.show(
+              this.#host.nativeElement,
+              PopupPosition.Right,
+              {
+                message: `Error deleting ${participant.firstName}`,
+                type: MessageType.Error,
+              },
+              false
+            );
+          },
+        })
+      )
+      .subscribe();
+  }
+  public readonly trashIcon = IconName.Trash;
+  public readonly AriaLabel = AriaLabel;
 }

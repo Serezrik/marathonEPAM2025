@@ -18,6 +18,7 @@
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
+  gap: 4px;
 
   .pill {
     font-size: 14px;
@@ -28,17 +29,29 @@
     }
   }
 
-  app-icon-button:not(:first-child) {
+  app-icon-button {
     position: relative;
-    &::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
+    svg {
+      fill: currentColor;
+      transition: fill 0.2s ease;
+    }
+
+    &:not(:first-child)::before {
       content: '';
       position: absolute;
       top: 50%;
-      left: -4px;
+      left: -6px;
       transform: translateY(-50%);
       width: 1px;
-      height: 40px;
+      height: 24px;
       background-color: $pl-li-divider-color;
+      opacity: 0.3;
+      z-index: 0; 
     }
   }
 }

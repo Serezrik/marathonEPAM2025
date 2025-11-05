@@ -5,7 +5,7 @@ import type {
   JoinRoomWelcomePageData,
 } from './app.models';
 
-export const ICONS_SPRITE_PATH = '/assets/icons/icons-sprite.svg';
+export const ICONS_SPRITE_PATH = 'assets/icons/icons-sprite.svg';
 
 export const IMAGES_SPRITE_PATH = '/assets/images/images-sprite.svg';
 
