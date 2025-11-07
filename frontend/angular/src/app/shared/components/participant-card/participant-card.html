@@ -34,4 +34,12 @@
       (click)="onInfoClick()"
     />
   }
+
+  @if (isCurrentUserAdmin() && !participant().isAdmin) {
+  <app-icon-button
+      [iconName]="trashIcon"
+      [ariaLabel]="AriaLabel.DeleteParticipant"
+      (click)="onDeleteClick()"
+    />
+  }
 </span>

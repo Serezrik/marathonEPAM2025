@@ -161,8 +161,13 @@ $btn-color-matrix: (
     focus: (
       text: $green-400,
     ),
-  ),
+  )
 ) !default;
+
+// 🔴 Icon danger colors (used for delete/trash buttons)
+$icon-danger: $red-500;
+$icon-danger-hover: $red-warning;
+$icon-danger-active: $red-600;
 
 $header-bg: $g-50;
 $header-border-color: $green-200;

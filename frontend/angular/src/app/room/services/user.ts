@@ -57,4 +57,12 @@ export class UserService {
       })
     );
   }
+  public deleteUser(userId: number, userCode: string): Observable<HttpResponse<void>> {
+  return this.#apiService.deleteUser(userId, userCode).pipe(
+    tap(() => {
+      // Updating the user list after deletion
+      this.getUsers().subscribe();
+    })
+  );
+}
 }

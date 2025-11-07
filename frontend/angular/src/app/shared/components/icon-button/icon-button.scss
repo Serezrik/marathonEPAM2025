@@ -7,39 +7,24 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-
-  &.button {
-    &--white {
-      .button {
-        fill: color.$icon-button-bg--secondary;
-
-        &:hover,
-        &:focus-visible {
-          fill: color.$icon-button-bg--secondary-hover;
-        }
-
-        &:active {
-          fill: color.$icon-button-bg--secondary-active;
-        }
-      }
-    }
-  }
 }
 
 .button {
-  fill: color.$icon-button-bg--primary;
   display: flex;
   align-items: center;
+  justify-content: center;
+  color: color.$icon-button-bg--primary; // заменили fill на color
+  transition: all 0.3s;
 
   &__icon {
     width: 24px;
     height: 24px;
-    transition: all 0.3s;
+    fill: currentColor; // SVG наследует цвет кнопки
   }
 
   &:hover,
   &:focus-visible {
-    fill: color.$icon-button-bg--primary-hover;
+    color: color.$icon-button-bg--primary-hover;
   }
 
   &:focus-visible {
@@ -48,11 +33,29 @@
   }
 
   &:active {
-    fill: color.$icon-button-bg--primary-active;
+    color: color.$icon-button-bg--primary-active;
   }
 
   &:disabled {
-    fill: color.$icon-button-bg--disabled;
+    color: color.$icon-button-bg--disabled;
     cursor: not-allowed;
+  }
+
+  &__icon--trash {
+    color: color.$icon-danger;
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus-visible {
+      color: color.$icon-danger-hover;
+    }
+
+    &:active {
+      color: color.$icon-danger-active;
+    }
+
+    &:disabled {
+      color: color.$icon-button-bg--disabled;
+    }
   }
 }

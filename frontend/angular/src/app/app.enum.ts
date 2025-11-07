@@ -19,9 +19,10 @@ export const enum IconName {
   Close = 'close',
   Link = 'link',
   Info = 'info',
+  Trash = 'trash',
 }
 
-export const enum AriaLabel {
+export enum AriaLabel {
   CopyButton = 'Copy to clipboard',
   EditButton = 'Edit item',
   SaveButton = 'Save changes',
@@ -31,6 +32,7 @@ export const enum AriaLabel {
   Close = 'Close',
   ParticipantLink = 'Copy personal link',
   Info = 'Info',
+  DeleteParticipant = 'Delete participant',
 }
 
 export const enum InputSidebarText {

@@ -3,7 +3,10 @@
   type="button"
   [attr.aria-label]="ariaLabel()"
   [disabled]="isButtonDisabled()">
-  <svg class="button__icon">
+  <svg
+    class="button__icon"
+    [ngClass]="{'button__icon--trash': iconHref() === trashHref}"
+  >
     <use [attr.xlink:href]="iconHref()" />
   </svg>
 </button>
