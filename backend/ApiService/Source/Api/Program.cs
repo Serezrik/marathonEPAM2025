@@ -5,9 +5,18 @@ var builder = WebApplication
     .CreateBuilder(args)
     .ConfigureApplicationBuilder();
 
-var app = builder
-    .Build()
-    .ConfigureApplication();
+var app = builder.Build();
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/" &&
+        context.Request.Host.Host.Equals("backend.marathontest.pp.ua", StringComparison.OrdinalIgnoreCase))
+    {
+        context.Response.Redirect("/swagger");
+        return;
+    }
+
+    await next();
+});
 
 try
 {
